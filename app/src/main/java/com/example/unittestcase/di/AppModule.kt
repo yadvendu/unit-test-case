@@ -13,5 +13,5 @@ object AppModule {
     @Singleton
     @Provides
     @JvmStatic
-    fun provideNoteDao(application: Application): NoteDao? = NoteDataBase.getAppDataBaseInstance(application)?.noteDao()
+    fun provideNoteDao(application: Application): NoteDao = NoteDataBase.getAppDataBaseInstance(application).noteDao()
 }

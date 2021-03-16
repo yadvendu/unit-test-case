@@ -1,6 +1,5 @@
 package com.example.unittestcase
 
-import android.app.Application
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
@@ -13,8 +12,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.junit.runner.manipulation.Ordering
-import org.mockito.Mock
 
 @RunWith(AndroidJUnit4::class)
 class NoteDataBaseTest {
@@ -44,7 +41,9 @@ class NoteDataBaseTest {
 
     @Test
     fun getNoteAndCompareWithInsertedNoteGivesSuccess() {
-        noteDao.insertNote(getNote()).blockingGet()
+        //Blocking gate is used with rxJava when test is not used after the function call
+        noteDao.insertNote(getNote()).blockingGet() // wait until inserted
+        //Here test is called, because we are supposed to test readAllNote, and hence no need to use blocking gate
         noteDao.readAllNote().test().assertValue {
             it[0].title == "Note"
         }

@@ -1,10 +1,8 @@
 package com.example.unittestcase.model.models
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.unittestcase.model.Note
 import junit.framework.Assert.assertEquals
 import org.junit.Assert.assertNotEquals
-import org.junit.Rule
 import org.junit.jupiter.api.Test
 
 internal class NoteTest {

@@ -17,7 +17,7 @@ abstract class NoteDataBase : RoomDatabase() {
         private const val DATABASE_NAME = "note_db"
         private var instance: NoteDataBase? = null
 
-        fun getAppDataBaseInstance(context: Context): NoteDataBase?{
+        fun getAppDataBaseInstance(context: Context): NoteDataBase{
             if (instance == null){
                 synchronized(NoteDataBase::class){
                     instance = Room.databaseBuilder(
@@ -29,7 +29,7 @@ abstract class NoteDataBase : RoomDatabase() {
                             .build()
                 }
             }
-            return instance
+            return instance!!
         }
     }
 }

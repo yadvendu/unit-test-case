@@ -18,4 +18,9 @@ data class Note(
     val content: String,
     @ColumnInfo(name = "timestamp")
     val timeStamp: String
-) : Parcelable
+) : Parcelable {
+    override fun equals(other: Any?): Boolean {
+        val note = other as Note
+        return note.id == id && note.title == title && note.content == content
+    }
+}
